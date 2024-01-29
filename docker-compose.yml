@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  patient-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB_NAME: ${POSTGRES_DB_NAME}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      DB_HOSTNAME: ${DB_HOSTNAME}
+    command: bash -c "python setup.py && uvicorn patient_backend.main:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - patient_backend:/patient_backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB_NAME: ${POSTGRES_DB_NAME}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    volumes:
+      - ./local_data_create.sql:/docker-entrypoint-initdb.d/local_data_create.sql
+    ports:
+      - "5432:5432"
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+volumes:
+  patient_backend:
+
