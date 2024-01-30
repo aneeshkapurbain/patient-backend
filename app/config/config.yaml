@@ -5,7 +5,7 @@ postgres:
   port: ${oc.env:POSTGRES_PORT}
   user: ${oc.env:POSTGRES_USER}
   password: ${oc.env:POSTGRES_PASSWORD}
-  dsn: postgres://${.user}:${.password}@${.host}:${.port}/${.database}
+  dsn: postgresql+asyncpg://${.user}:${.password}@${.host}:${.port}/${.database}
 
 logging:
   format: "{time} | Level: {level: <8} | Module: {name: ^15} | Func: {function: ^15} | Line:{line: >3} | {message}"

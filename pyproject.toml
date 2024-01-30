@@ -12,7 +12,8 @@ loguru = "^0.7.2"
 uvicorn = "^0.27.0"
 omegaconf = "^2.3.0"
 python-dotenv = "^1.0.1"
-
+sqlalchemy = "^2.0.25"
+asyncpg = "^0.29.0"
 
 [build-system]
 requires = ["poetry-core"]

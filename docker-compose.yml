@@ -19,6 +19,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres:/data/postgres
+      - ./DDL-AV.sql:/docker-entrypoint-initdb.d/DDL-AV.sql
 
   adminer:
     image: adminer
