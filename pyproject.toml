@@ -2,29 +2,17 @@
 name = "patient-backend"
 version = "0.1.0"
 description = ""
-authors = ["Aneesh Kapur <aneesh.kapur@bain.com>"]
+authors = ["Aksh Bhati <aksh.bhati@nagarro.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-uvicorn = "^0.25.0"
-fastapi = {extras = ["all"], version = "^0.108.0"}
-black = "^23.12.1"
-flake8 = "^7.0.0"
-sqlalchemy = "^2.0.25"
-make = "^0.1.6.post2"
-pylint = "^3.0.3"
-pytest = "^7.4.4"
-boto3 = "^1.34.19"
-psycopg2-binary = "^2.9.9"
+python = "3.11.7"
+fastapi = "^0.109.0"
+loguru = "^0.7.2"
+uvicorn = "^0.27.0"
+omegaconf = "^2.3.0"
+python-dotenv = "^1.0.1"
 
-
-
-[tool.poetry.group.dev.dependencies]
-uvicorn = "^0.25.0"
-flake8 = "^7.0.0"
-black = "^23.12.1"
-make = "^0.1.6.post2"
 
 [build-system]
 requires = ["poetry-core"]
